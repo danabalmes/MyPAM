@@ -33,7 +33,7 @@ public class DataItemAdapterListView extends ArrayAdapter<Category> {
     public TextView tvName;
     public View mView;
 
-    public DataItemAdapterListView(@NonNull Context context, @NonNull List<Category> objects) {
+    DataItemAdapterListView(@NonNull Context context, @NonNull List<Category> objects) {
 
         super(context, R.layout.activity_category, objects);
         mCategory = objects;
