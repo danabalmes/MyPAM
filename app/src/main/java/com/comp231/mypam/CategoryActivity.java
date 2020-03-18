@@ -11,6 +11,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,6 +47,8 @@ public class CategoryActivity extends AppCompatActivity {
                 test1 = findViewById(R.id.test1);
                 test1.setText("");
                 function = "C";
+                FloatingActionButton fabDelete = findViewById(R.id.fabDelete);
+                fabDelete.hide();
             }
         }
 
@@ -67,10 +70,14 @@ public class CategoryActivity extends AppCompatActivity {
                 EditText editCategory;
                 editCategory = findViewById(R.id.test1);
                 String name = editCategory.getText().toString();
-
                 final Context here = getBaseContext();
                 DataSource mDataSource = new DataSource(getApplicationContext());
                 mDataSource.open();
+
+                if (TextUtils.isEmpty(name)){
+                    Toast.makeText(here,"Type a Category Name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (function == "C") {
                     Category newCategory = new Category(null,name,"A","D");
@@ -84,8 +91,6 @@ public class CategoryActivity extends AppCompatActivity {
                 Toast.makeText(here,"Changes Saved", Toast.LENGTH_SHORT).show();
                 setResult(CategoryActivity.RESULT_OK);
                 finish();
-//                Intent i = new Intent(getApplicationContext(), CategoryActivity.class);
-//                startActivity(i);
             }
         });
 
@@ -107,8 +112,6 @@ public class CategoryActivity extends AppCompatActivity {
                 Toast.makeText(here,name + " Deleted", Toast.LENGTH_SHORT).show();
                 setResult(CategoryActivity.RESULT_OK);
                 finish();
-//                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(i);
             }
         });
 

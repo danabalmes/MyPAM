@@ -109,7 +109,6 @@ public class CategoryFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(mContext, CategoryActivity.class);
                 i.putExtra("add", "add");
-//                startActivity(i);
                 getActivity().startActivityForResult(i,10);
             }
         });
